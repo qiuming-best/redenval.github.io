@@ -79,12 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="ceph peeringPG在如下两种情况下触发Peering过程:  当系统初始化时，OSD重新启动导致PG重新加载，或者PG新创建时，PG会发起一次Peering的过程。 当有OSD失效，OSD的增加或者删除等导致PG的acting set发生了变化，该PG就会重新发起一次Peering”  ceph recoverynote 主副本上的缺失对象的信息保存在pg_log类的pg_missing">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/ceph-recovery/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ceph peeringPG在如下两种情况下触发Peering过程:  当系统初始化时，OSD重新启动导致PG重新加载，或者PG新创建时，PG会发起一次Peering的过程。 当有OSD失效，OSD的增加或者删除等导致PG的acting set发生了变化，该PG就会重新发起一次Peering”  ceph recoverynote 主副本上的缺失对象的信息保存在pg_log类的pg_missing">
+<meta property="og:image" content="http://ohn764ue3.bkt.clouddn.com/CephNote/queue_thread/queue_threads.png-name">
+<meta property="og:updated_time" content="2018-03-03T01:50:26.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="ceph peeringPG在如下两种情况下触发Peering过程:  当系统初始化时，OSD重新启动导致PG重新加载，或者PG新创建时，PG会发起一次Peering的过程。 当有OSD失效，OSD的增加或者删除等导致PG的acting set发生了变化，该PG就会重新发起一次Peering”  ceph recoverynote 主副本上的缺失对象的信息保存在pg_log类的pg_missing">
+<meta name="twitter:image" content="http://ohn764ue3.bkt.clouddn.com/CephNote/queue_thread/queue_threads.png-name">
 
 
 
@@ -114,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/03/ceph-recovery/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -139,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/03/ceph-recovery/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -297,9 +300,7 @@
       
 
       
-        
-          
-            <h1 id="ceph-peering"><a href="#ceph-peering" class="headerlink" title="ceph peering"></a>ceph peering</h1><p>PG在如下两种情况下触发Peering过程:</p>
+        <h1 id="ceph-peering"><a href="#ceph-peering" class="headerlink" title="ceph peering"></a>ceph peering</h1><p>PG在如下两种情况下触发Peering过程:</p>
 <ul>
 <li>当系统初始化时，OSD重新启动导致PG重新加载，或者PG新创建时，PG会发起一次Peering的过程。</li>
 <li>当有OSD失效，OSD的增加或者删除等导致PG的acting set发生了变化，该PG就会重新发起一次Peering”</li>
@@ -332,8 +333,6 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
 </code></pre><h4 id="12-0x00007fe7bff09219-in-ShardedThreadPool-shardedthreadpool-worker-this-0x7fe7ca5cea30-thread-index"><a href="#12-0x00007fe7bff09219-in-ShardedThreadPool-shardedthreadpool-worker-this-0x7fe7ca5cea30-thread-index" class="headerlink" title="12 0x00007fe7bff09219 in ShardedThreadPool::shardedthreadpool_worker (this=0x7fe7ca5cea30, thread_index=)"></a>12 0x00007fe7bff09219 in ShardedThreadPool::shardedthreadpool_worker (this=0x7fe7ca5cea30, thread_index=<optimized out="">)</optimized></h4><pre><code>at /opt/qiuming/ceph/src/common/WorkQueue.cc:339
 </code></pre><h4 id="13-0x00007fe7bff0b1b0-in-ShardedThreadPool-WorkThreadSharded-entry-this-at-opt-qiuming-ceph-src-common-WorkQueue-h-689"><a href="#13-0x00007fe7bff0b1b0-in-ShardedThreadPool-WorkThreadSharded-entry-this-at-opt-qiuming-ceph-src-common-WorkQueue-h-689" class="headerlink" title="13 0x00007fe7bff0b1b0 in ShardedThreadPool::WorkThreadSharded::entry (this=) at /opt/qiuming/ceph/src/common/WorkQueue.h:689"></a>13 0x00007fe7bff0b1b0 in ShardedThreadPool::WorkThreadSharded::entry (this=<optimized out="">) at /opt/qiuming/ceph/src/common/WorkQueue.h:689</optimized></h4><h4 id="14-0x00007fe7bcac1e25-in-start-thread-from-lib64-libpthread-so-0"><a href="#14-0x00007fe7bcac1e25-in-start-thread-from-lib64-libpthread-so-0" class="headerlink" title="14 0x00007fe7bcac1e25 in start_thread () from /lib64/libpthread.so.0"></a>14 0x00007fe7bcac1e25 in start_thread () from /lib64/libpthread.so.0</h4><h4 id="15-0x00007fe7bbbb534d-in-clone-from-lib64-libc-so-6"><a href="#15-0x00007fe7bbbb534d-in-clone-from-lib64-libc-so-6" class="headerlink" title="15 0x00007fe7bbbb534d in clone () from /lib64/libc.so.6"></a>15 0x00007fe7bbbb534d in clone () from /lib64/libc.so.6</h4><h3 id="ceph-线程-和-队列"><a href="#ceph-线程-和-队列" class="headerlink" title="ceph 线程 和 队列"></a>ceph 线程 和 队列</h3><p><img src="http://ohn764ue3.bkt.clouddn.com/CephNote/queue_thread/queue_threads.png-name" alt="img"></p>
 
-          
-        
       
     </div>
     
@@ -350,131 +349,28 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/my-first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/03/my-first-blog/" itemprop="url">my first blog</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-03T08:41:43+08:00">
-                2018-03-03
-              </time>
+              <a href="/2018/03/03/my-first-blog/" rel="next" title="my first blog">
+                <i class="fa fa-chevron-left"></i> my first blog
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -484,138 +380,11 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-03T08:39:32+08:00">
-                2018-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -623,6 +392,10 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
 
 
           
+
+  
+
+
 
         </div>
         
@@ -643,8 +416,17 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -686,6 +468,22 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ceph-peering"><span class="nav-number">1.</span> <span class="nav-text">ceph peering</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ceph-recovery"><span class="nav-number">2.</span> <span class="nav-text">ceph recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#note"><span class="nav-number">2.0.1.</span> <span class="nav-text">note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-recovery-函数堆栈信息"><span class="nav-number">2.0.2.</span> <span class="nav-text">do_recovery 函数堆栈信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0x00007fe7bfbf0309-in-PGQueueable-RunVis-operator-this-this-entry-0x7fe7a49f8030-op-…"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">1  0x00007fe7bfbf0309 in PGQueueable::RunVis::operator() (this=this@entry=0x7fe7a49f8030, op=…)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-0x00007fe7bf9abbc9-in-internal-visit-operand-…-this"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">2  0x00007fe7bf9abbc9 in internal_visit (operand=…, this=)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-visitation-impl-invoke-impl-lt-boost-detail-variant-invoke-visitorPGQueueable-RunVis-void-PGRecovery-gt-storage-0x7fe7a49f8080"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">3  visitation_impl_invoke_impl&lt;boost::detail::variant::invoke_visitorPGQueueable::RunVis, void*, PGRecovery&gt; (storage=0x7fe7a49f8080,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-visitation-impl-invoke-lt-boost-detail-variant-invoke-visitorPGQueueable-RunVis-void-PGRecovery-boost-variant-lt-boost-intrusive-ptr-PGSnapTrim-PGScrub-PGRecovery-gt-has-fallback-type-gt-t-0x0-storage-0x7fe7a49f8080-visitor"><span class="nav-number">2.0.2.4.</span> <span class="nav-text">4  visitation_impl_invoke&lt;boost::detail::variant::invoke_visitorPGQueueable::RunVis, void*, PGRecovery, boost::variant&lt;boost::intrusive_ptr, PGSnapTrim, PGScrub, PGRecovery&gt;::has_fallback_type_&gt; (t=0x0, storage=0x7fe7a49f8080, visitor=,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-visitation-impl-lt-mpl-int-boost-detail-variant-visitation-impl-step-lt-boost-mpl-l-iter-lt-boost-mpl-l-item-lt-mpl-long-boost-intrusive-ptr-boost-mpl-l-item-lt-mpl-long-PGSnapTrim-boost-mpl-l-item-lt-mpl-long-PGScrub-boost-mpl-l-item-lt-mpl-long-PGRecovery-boost-mpl-l-end-gt-gt-gt-gt-gt-boost-mpl-l-iterboost-mpl-l-end-gt-boost-detail-variant-invoke-visitorPGQueueable-RunVis-void-boost-variant-lt-boost-intrusive-ptr-PGSnapTrim-PGScrub-PGRecovery-gt-has-fallback-type-gt-no-backup-flag-…"><span class="nav-number">2.0.2.5.</span> <span class="nav-text">5  visitation_impl&lt;mpl_::int_, boost::detail::variant::visitation_impl_step&lt;boost::mpl::l_iter&lt;boost::mpl::l_item&lt;mpl_::long_, boost::intrusive_ptr, boost::mpl::l_item&lt;mpl_::long_, PGSnapTrim, boost::mpl::l_item&lt;mpl_::long_, PGScrub, boost::mpl::l_item&lt;mpl_::long_, PGRecovery, boost::mpl::l_end&gt; &gt; &gt; &gt; &gt;, boost::mpl::l_iterboost::mpl::l_end &gt;, boost::detail::variant::invoke_visitorPGQueueable::RunVis, void*, boost::variant&lt;boost::intrusive_ptr, PGSnapTrim, PGScrub, PGRecovery&gt;::has_fallback_type_&gt; (no_backup_flag=…,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-internal-apply-visitor-impl-lt-boost-detail-variant-invoke-visitorPGQueueable-RunVis-void-gt-storage-0x7fe7a49f8080"><span class="nav-number">2.0.2.6.</span> <span class="nav-text">6  internal_apply_visitor_impl&lt;boost::detail::variant::invoke_visitorPGQueueable::RunVis, void*&gt; (storage=0x7fe7a49f8080,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-internal-apply-visitor-lt-boost-detail-variant-invoke-visitorPGQueueable-RunVis-gt-visitor-this-0x7fe7a49f8078"><span class="nav-number">2.0.2.7.</span> <span class="nav-text">7  internal_apply_visitor&lt;boost::detail::variant::invoke_visitorPGQueueable::RunVis &gt; (visitor=, this=0x7fe7a49f8078)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-apply-visitorPGQueueable-RunVis-visitor-…-this-0x7fe7a49f8078"><span class="nav-number">2.0.2.8.</span> <span class="nav-text">8  apply_visitorPGQueueable::RunVis (visitor=…, this=0x7fe7a49f8078)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-apply-visitor-lt-PGQueueable-RunVis-boost-variant-lt-boost-intrusive-ptr-PGSnapTrim-PGScrub-PGRecovery-gt-gt-visitable-…"><span class="nav-number">2.0.2.9.</span> <span class="nav-text">9  apply_visitor&lt;PGQueueable::RunVis, boost::variant&lt;boost::intrusive_ptr, PGSnapTrim, PGScrub, PGRecovery&gt; &gt; (visitable=…,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-run-handle-…-pg-…-osd-this-0x7fe7a49f8078-at-opt-qiuming-ceph-src-osd-PGQueueable-h-140"><span class="nav-number">2.0.2.10.</span> <span class="nav-text">10 run (handle=…, pg=…, osd=, this=0x7fe7a49f8078) at /opt/qiuming/ceph/src/osd/PGQueueable.h:140</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-OSD-ShardedOpWQ-process-this-0x7fe7ca5cf240-thread-index-hb-0x7fe7ca92c0a0"><span class="nav-number">2.0.2.11.</span> <span class="nav-text">11 OSD::ShardedOpWQ::_process (this=0x7fe7ca5cf240, thread_index=, hb=0x7fe7ca92c0a0)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-0x00007fe7bff09219-in-ShardedThreadPool-shardedthreadpool-worker-this-0x7fe7ca5cea30-thread-index"><span class="nav-number">2.0.2.12.</span> <span class="nav-text">12 0x00007fe7bff09219 in ShardedThreadPool::shardedthreadpool_worker (this=0x7fe7ca5cea30, thread_index=)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-0x00007fe7bff0b1b0-in-ShardedThreadPool-WorkThreadSharded-entry-this-at-opt-qiuming-ceph-src-common-WorkQueue-h-689"><span class="nav-number">2.0.2.13.</span> <span class="nav-text">13 0x00007fe7bff0b1b0 in ShardedThreadPool::WorkThreadSharded::entry (this=) at /opt/qiuming/ceph/src/common/WorkQueue.h:689</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-0x00007fe7bcac1e25-in-start-thread-from-lib64-libpthread-so-0"><span class="nav-number">2.0.2.14.</span> <span class="nav-text">14 0x00007fe7bcac1e25 in start_thread () from /lib64/libpthread.so.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-0x00007fe7bbbb534d-in-clone-from-lib64-libc-so-6"><span class="nav-number">2.0.2.15.</span> <span class="nav-text">15 0x00007fe7bbbb534d in clone () from /lib64/libc.so.6</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ceph-线程-和-队列"><span class="nav-number">2.0.3.</span> <span class="nav-text">ceph 线程 和 队列</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -819,6 +617,10 @@ at /opt/qiuming/ceph/build/boost/include/boost/variant/variant.hpp:2389
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
