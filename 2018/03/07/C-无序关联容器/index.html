@@ -15,17 +15,19 @@
 
 
 
-<meta name="description" content="c++关联容器总结关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。关联容器支持高效的关键字查找与访问。两个主要的关联容器类型是map与set。 map关联容器map关联容器的类型 1234map ：关联数组；保存关键字-值对；数据的存放是有序的 multimap：关键字可以重复出现的map unorde">
-<meta name="keywords" content="管理容器 map set unordered_map unordered_set">
+<meta name="description" content="C++ 11标准当中新增加了四个无序关联容器，分别是unordered_map 映射  unordered_multimap 多重映射  unordered_set 集合  unordered_multiset 多重集合 与普通的map和set的基本功能一样，但是内部实现方式却完全不同。map与set的实现方式为红黑树unordered_map和unordered_set的实现方式为哈希函数，所以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++关联容器总结">
-<meta property="og:url" content="http://yoursite.com/2018/03/07/c-关联容器总结/index.html">
+<meta property="og:title" content="C++ 无序关联容器">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/C-无序关联容器/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="c++关联容器总结关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。关联容器支持高效的关键字查找与访问。两个主要的关联容器类型是map与set。 map关联容器map关联容器的类型 1234map ：关联数组；保存关键字-值对；数据的存放是有序的 multimap：关键字可以重复出现的map unorde">
-<meta property="og:updated_time" content="2018-03-07T12:17:36.260Z">
+<meta property="og:description" content="C++ 11标准当中新增加了四个无序关联容器，分别是unordered_map 映射  unordered_multimap 多重映射  unordered_set 集合  unordered_multiset 多重集合 与普通的map和set的基本功能一样，但是内部实现方式却完全不同。map与set的实现方式为红黑树unordered_map和unordered_set的实现方式为哈希函数，所以">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/C-无序关联容器/bucket_manage.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/07/C-无序关联容器/hash_result.png">
+<meta property="og:updated_time" content="2018-03-07T12:48:28.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++关联容器总结">
-<meta name="twitter:description" content="c++关联容器总结关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。关联容器支持高效的关键字查找与访问。两个主要的关联容器类型是map与set。 map关联容器map关联容器的类型 1234map ：关联数组；保存关键字-值对；数据的存放是有序的 multimap：关键字可以重复出现的map unorde">
+<meta name="twitter:title" content="C++ 无序关联容器">
+<meta name="twitter:description" content="C++ 11标准当中新增加了四个无序关联容器，分别是unordered_map 映射  unordered_multimap 多重映射  unordered_set 集合  unordered_multiset 多重集合 与普通的map和set的基本功能一样，但是内部实现方式却完全不同。map与set的实现方式为红黑树unordered_map和unordered_set的实现方式为哈希函数，所以">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/07/C-无序关联容器/bucket_manage.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>c++关联容器总结 | Hexo</title>
+<title>C++ 无序关联容器 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -257,11 +259,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-c-关联容器总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-C-无序关联容器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/03/07/c-关联容器总结/" class="article-date">
-      <time datetime="2018-03-07T12:16:07.000Z" itemprop="datePublished">2018-03-07</time>
+      <a href="/2018/03/07/C-无序关联容器/" class="article-date">
+      <time datetime="2018-03-07T12:38:49.000Z" itemprop="datePublished">2018-03-07</time>
 </a>
 
 
@@ -276,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      c++关联容器总结
+      C++ 无序关联容器
     </h1>
   
 
@@ -286,10 +288,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/管理容器-map-set-unordered-map-unordered-set/">管理容器 map set unordered_map unordered_set</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -297,18 +295,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="c-关联容器总结"><a href="#c-关联容器总结" class="headerlink" title="c++关联容器总结"></a>c++关联容器总结</h1><p>关联容器和顺序容器有着根本的不同：关联容器中的元素是按关键字来保存和访问的。与之相对，顺序容器中的元素是按它们在容器中的位置来顺序保存和访问的。<br>关联容器支持高效的关键字查找与访问。两个主要的关联容器类型是map与set。</p>
-<h2 id="map关联容器"><a href="#map关联容器" class="headerlink" title="map关联容器"></a>map关联容器</h2><p>map关联容器的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map ：关联数组；保存关键字-值对；数据的存放是有序的 </span><br><span class="line">multimap：关键字可以重复出现的map </span><br><span class="line">unordered_map：用哈希函数组织的map；容器中的数据存放是无序的 </span><br><span class="line">unordered_multimap：哈希组织的map；关键字可以重复出现</span><br></pre></td></tr></table></figure>
-<h2 id="set类容器"><a href="#set类容器" class="headerlink" title="set类容器"></a>set类容器</h2><p>set容器中的每个元素只包含一个关键字，可以这么认为，其实set就是一个集合，用来存储同类型的元素。</p>
-<p>set关联容器的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set : 关键字即值，即只保存关键字的容器 </span><br><span class="line">multiset : 关键字可重复出现的set </span><br><span class="line">unordered_set: 无序的set </span><br><span class="line">unordered_multiset: 关键字可以重复出现的无序的set</span><br></pre></td></tr></table></figure>
-<h2 id="无序关联容器"><a href="#无序关联容器" class="headerlink" title="无序关联容器"></a>无序关联容器</h2><p>unordered_map与unordered_set都是无序的关联容器。在此，我们将它们一起总结。 </p>
-<p>有序关联容器中的关键字是有序排列的，所以要求关键字可以进行&lt;运算符比较或满足自定义的比较操作。无序关联容器不是使用比较运算符来组织元素，而是使用一个哈希函数和关键字类型的==运算符。 </p>
-<p>无序容器可以使用上述所有的与有序容器相同的操作，由于无序容器在存储上组织为桶，每个桶保存零个或多个元素，容器的性能依赖于哈希函数的质量和桶的数量和大小，因此无序容器多了一些哈希函数和桶相关的操作。</p>
-<h4 id="1-桶接口"><a href="#1-桶接口" class="headerlink" title="1.桶接口"></a>1.桶接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m.bucket_count()        正在使用的桶的数目</span><br><span class="line">m.max_bucket_count()    容器能容纳的最多的桶的数量</span><br><span class="line">m.bucket_size(n)        第n个桶中有多少个元素</span><br><span class="line">m.bucket(k)             关键字为k的元素在哪个桶</span><br></pre></td></tr></table></figure>
-<h4 id="2-桶迭代"><a href="#2-桶迭代" class="headerlink" title="2.桶迭代"></a>2.桶迭代</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">local_iterator            可以用来访问桶中元素的迭代器类型</span><br><span class="line">const_local_iterator      桶迭代器的const版本</span><br><span class="line">m.begin(n)、m.end(n)      桶n的首元素迭代器和尾后迭代器（n是什么类型？）</span><br><span class="line">m.cbegin(n)、m.cend(n)    与前两个函数类似，但返回const_local_iterator</span><br></pre></td></tr></table></figure>
-<h4 id="3-哈希策略"><a href="#3-哈希策略" class="headerlink" title="3.哈希策略"></a>3.哈希策略</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//每个桶的平均元素数量，返回float值</span><br><span class="line">m.load_factor() </span><br><span class="line">//m试图维护的平均桶大小，返回float值，要求创建的新桶的load_factor&lt;=max_load_factor         </span><br><span class="line">m.max_load_factor() </span><br><span class="line">//重新存储，使得bucket_count&gt;=n，且bucket_count&gt;size/max_load_factor         </span><br><span class="line">m.rehash(n)  </span><br><span class="line">//重新存储，使得m可以保存n个元素且不必rehash </span><br><span class="line">m.reserve(n)</span><br></pre></td></tr></table></figure>
+        <p>C++ 11标准当中新增加了四个无序关联容器，分别是<br><strong>unordered_map</strong> 映射 </p>
+<p><strong>unordered_multimap</strong> 多重映射 </p>
+<p><strong>unordered_set</strong> 集合 </p>
+<p><strong>unordered_multiset</strong> 多重集合</p>
+<p>与普通的map和set的基本功能一样，但是内部实现方式却完全不同。<br>map与set的实现方式为红黑树<br>unordered_map和unordered_set的实现方式为哈希函数，所以无序关联容器不会根据key值对存储的元素进行排序。</p>
+<h3 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h3><h4 id="插入操作："><a href="#插入操作：" class="headerlink" title="插入操作："></a>插入操作：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef pair&lt;string,size_t&gt; pss;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(false);</span><br><span class="line"></span><br><span class="line">    unordered_map&lt;string,size_t&gt; u_map;</span><br><span class="line">    pss p1=&#123;&quot;efg&quot;,2&#125;;</span><br><span class="line"></span><br><span class="line">    string s=&quot;abc&quot;;</span><br><span class="line">    u_map[s]++;//使用下标插入</span><br><span class="line"></span><br><span class="line">    u_map.insert(p1);//使用insert函数插入一个pair</span><br><span class="line"></span><br><span class="line">    u_map.insert(&#123;&#123;&quot;www&quot;,2&#125;,&#123;&quot;wqwe&quot;,3&#125;&#125;);//插入一个初始化列表</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    vector&lt;pss&gt; vp=&#123;&#123;&quot;wrrr&quot;,2&#125;,&#123;&quot;ttt&quot;,3&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    u_map.insert(vp.begin(),vp.end());//插入一个迭代器范围</span><br><span class="line"></span><br><span class="line">    for(auto x:u_map)</span><br><span class="line">        cout&lt;&lt;x.first&lt;&lt;&quot; &quot;&lt;&lt;x.second&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="查找与删除操作"><a href="#查找与删除操作" class="headerlink" title="查找与删除操作"></a>查找与删除操作</h4><h5 id="查找函数：find"><a href="#查找函数：find" class="headerlink" title="查找函数：find"></a>查找函数：find</h5><p>与其他容器当中的find方法相同，参数内容可以是迭代器，也可以是key值。<br>返回内容为迭代器，如果查找内容不存在，则返回迭代器尾部。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;string,size_t&gt; u_map;</span><br><span class="line">vector&lt;pss&gt; vp=&#123;&#123;&quot;wrrr&quot;,2&#125;,&#123;&quot;ttt&quot;,3&#125;,&#123;&quot;www&quot;,3&#125;,&#123;&quot;qq&quot;,10&#125;&#125;;</span><br><span class="line">u_map.insert(vp.begin(),vp.end());</span><br><span class="line">auto it=u_map.find(&quot;qq&quot;);</span><br><span class="line">if(it!=u_map.end())</span><br><span class="line">    cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<h5 id="删除函数：earse"><a href="#删除函数：earse" class="headerlink" title="删除函数：earse"></a>删除函数：earse</h5><p>与其他容器当中的erase方法相同，参数中内容可以是迭代器，也可以是key值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;string,size_t&gt; u_map;</span><br><span class="line">vector&lt;pss&gt; vp=&#123;&#123;&quot;wrrr&quot;,2&#125;,&#123;&quot;ttt&quot;,3&#125;,&#123;&quot;www&quot;,3&#125;,&#123;&quot;qq&quot;,10&#125;&#125;;</span><br><span class="line">u_map.insert(vp.begin(),vp.end());</span><br><span class="line"></span><br><span class="line">u_map.erase(&quot;www&quot;);//直接按照key值删除</span><br><span class="line"></span><br><span class="line">for(auto x:u_map)</span><br><span class="line">    cout&lt;&lt;x.first&lt;&lt;&quot; &quot;&lt;&lt;x.second&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<h3 id="桶管理"><a href="#桶管理" class="headerlink" title="桶管理"></a>桶管理</h3><p>由于无序关联容器的实现是基于hash函数，那么就需要解决冲突问题，解决冲突的办法比较常用有开放地址法和拉链法。在C++的unordered_map当中，采用的是”桶”的方法，也就是出现冲突的元素都存放在一个桶里。用拉链法的图来做个例子<br><img src="/2018/03/07/C-无序关联容器/bucket_manage.png" alt="image"><br>在unordered_map当中所使用的哈希策略可以通过函数重载由用户自定义。<br>遍历每个桶，并输出桶中的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;string,size_t&gt; u_map;</span><br><span class="line">    vector&lt;pss&gt; vp=&#123;&#123;&quot;wrrr&quot;,2&#125;,&#123;&quot;ttt&quot;,3&#125;,&#123;&quot;www&quot;,3&#125;,&#123;&quot;qq&quot;,10&#125;&#125;;</span><br><span class="line">    u_map.insert(vp.begin(),vp.end());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for(auto i=0;i&lt;u_map.bucket_count();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(auto it=u_map.begin(i);it!=u_map.end(i);it++)//迭代器中添加参数，选择桶的编号</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;bucket: &quot;&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>如何查看要存入的内容经过hash函数处理以后的hash值？可以使用hash_function函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">typedef unordered_map&lt;string,size_t&gt; string_int_map</span><br><span class="line">    unordered_map&lt;string,size_t&gt; u_map;</span><br><span class="line">    vector&lt;pss&gt; vp=&#123;&#123;&quot;wrrr&quot;,2&#125;,&#123;&quot;ttt&quot;,3&#125;,&#123;&quot;www&quot;,3&#125;,&#123;&quot;qq&quot;,10&#125;&#125;;</span><br><span class="line">    u_map.insert(vp.begin(),vp.end());</span><br><span class="line"></span><br><span class="line">    string_int_map::hasher fn=u_map.hash_function();</span><br><span class="line"></span><br><span class="line">    for(auto it=vp.begin();it!=vp.end();it++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;it-&gt;first&lt;&lt;&quot;的哈希值是: &quot;&lt;&lt;fn(it-&gt;first)&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/03/07/C-无序关联容器/hash_result.png" alt="image"></p>
+<p>在效率上，hash的操作时间复杂度是O(1)，但是在真实的情况下，需要对hash的函数进行详细的设计，否则效率和内存方面的开销会很大。</p>
 
       
     </div>
@@ -317,13 +319,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/03/07/c-关联容器总结/">c++关联容器总结</a></p>
+        <p><span>本文标题:</span><a href="/2018/03/07/C-无序关联容器/">C++ 无序关联容器</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">John Doe</a></p>
-        <p><span>发布时间:</span>2018-03-07, 20:16:07</p>
-        <p><span>最后更新:</span>2018-03-07, 20:17:36</p>
+        <p><span>发布时间:</span>2018-03-07, 20:38:49</p>
+        <p><span>最后更新:</span>2018-03-07, 20:48:28</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/07/c-关联容器总结/" title="c++关联容器总结">http://yoursite.com/2018/03/07/c-关联容器总结/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/07/c-关联容器总结/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/07/C-无序关联容器/" title="C++ 无序关联容器">http://yoursite.com/2018/03/07/C-无序关联容器/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/07/C-无序关联容器/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -335,16 +337,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/07/C-无序关联容器/">
-                    C++ 无序关联容器
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/07/STL里的multimap使用简介/">
-                    STL里的multimap使用简介
+                <a href="/2018/03/07/c-关联容器总结/">
+                    c++关联容器总结
                 </a>
             </div>
         
@@ -356,7 +352,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#c-关联容器总结"><span class="toc-number">1.</span> <span class="toc-text">c++关联容器总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#map关联容器"><span class="toc-number">1.1.</span> <span class="toc-text">map关联容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set类容器"><span class="toc-number">1.2.</span> <span class="toc-text">set类容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无序关联容器"><span class="toc-number">1.3.</span> <span class="toc-text">无序关联容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-桶接口"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">1.桶接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-桶迭代"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">2.桶迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-哈希策略"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">3.哈希策略</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#unordered-map"><span class="toc-number">1.</span> <span class="toc-text">unordered_map</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#插入操作："><span class="toc-number">1.1.</span> <span class="toc-text">插入操作：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找与删除操作"><span class="toc-number">1.2.</span> <span class="toc-text">查找与删除操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查找函数：find"><span class="toc-number">1.2.1.</span> <span class="toc-text">查找函数：find</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除函数：earse"><span class="toc-number">1.2.2.</span> <span class="toc-text">删除函数：earse</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桶管理"><span class="toc-number">2.</span> <span class="toc-text">桶管理</span></a></li></ol>
         
     </div>
     <style>
@@ -392,7 +388,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"c++关联容器总结　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"C++ 无序关联容器　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -412,15 +408,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/07/C-无序关联容器/" title="上一篇: C++ 无序关联容器">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/07/STL里的multimap使用简介/" title="下一篇: STL里的multimap使用简介">
+            <a href="/2018/03/07/c-关联容器总结/" title="下一篇: c++关联容器总结">
                 <i class="fa fa-angle-right"></i>
             </a>
         
