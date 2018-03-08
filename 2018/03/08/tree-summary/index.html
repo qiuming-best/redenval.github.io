@@ -18,21 +18,21 @@
 <meta name="description" content="背景:这几天在看《高性能Mysql》,在看到创建高性能的索引,书上说mysql的存储引擎InnoDB采用的索引类型是B+Tree,那么,大家有没有产生这样一个疑问,对于数据索引,为什么要使用B+Tree这种数据结构,和其它树相比,它能体现的优点在哪里? 看完这篇文章你就会了解到这些数据结构的原理以及它们各自的应用场景. 二叉查找树简介二叉查找树也称为有序二叉查找树,满足二叉查找树的一般性质,是指一">
 <meta name="keywords" content="二叉树 avl B B+ 红黑树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tree_summary">
+<meta property="og:title" content="浅谈AVL树,红黑树,B树,B 树原理及应用">
 <meta property="og:url" content="http://yoursite.com/2018/03/08/tree-summary/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="背景:这几天在看《高性能Mysql》,在看到创建高性能的索引,书上说mysql的存储引擎InnoDB采用的索引类型是B+Tree,那么,大家有没有产生这样一个疑问,对于数据索引,为什么要使用B+Tree这种数据结构,和其它树相比,它能体现的优点在哪里? 看完这篇文章你就会了解到这些数据结构的原理以及它们各自的应用场景. 二叉查找树简介二叉查找树也称为有序二叉查找树,满足二叉查找树的一般性质,是指一">
-<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/a/%20linklist">
+<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/a_linklist">
 <meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/avl">
-<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/RB/%20Tree">
-<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/B/%20Tree">
-<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/tree_summary/B+/%20tree.png">
-<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/tree_summary/B/%20and/%20B+/">
-<meta property="og:updated_time" content="2018-03-08T02:55:03.925Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/RB_Tree">
+<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/BTree">
+<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/tree_summary/B_tree">
+<meta property="og:image" content="http://yoursite.com/2018/03/08/tree-summary/tree_summary/B_B_tree.png">
+<meta property="og:updated_time" content="2018-03-08T03:11:56.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tree_summary">
+<meta name="twitter:title" content="浅谈AVL树,红黑树,B树,B 树原理及应用">
 <meta name="twitter:description" content="背景:这几天在看《高性能Mysql》,在看到创建高性能的索引,书上说mysql的存储引擎InnoDB采用的索引类型是B+Tree,那么,大家有没有产生这样一个疑问,对于数据索引,为什么要使用B+Tree这种数据结构,和其它树相比,它能体现的优点在哪里? 看完这篇文章你就会了解到这些数据结构的原理以及它们各自的应用场景. 二叉查找树简介二叉查找树也称为有序二叉查找树,满足二叉查找树的一般性质,是指一">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/08/tree-summary/a/%20linklist">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/08/tree-summary/a_linklist">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -64,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tree_summary | Hexo</title>
+<title>浅谈AVL树,红黑树,B树,B 树原理及应用 | Hexo</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -283,7 +283,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tree_summary
+      浅谈AVL树,红黑树,B树,B 树原理及应用
     </h1>
   
 
@@ -311,7 +311,7 @@
 <li>任意节点右子树不为空,则右子树的值均大于于根节点的值.</li>
 <li>任意节点的左右子树也分别是二叉查找树.<br>没有键值相等的节点.<h3 id="局限性及应用"><a href="#局限性及应用" class="headerlink" title="局限性及应用"></a>局限性及应用</h3>一个二叉查找树是由n个节点随机构成,所以，对于某些情况,二叉查找树会退化成一个有n个节点的线性链.<br>如下图: </li>
 </ul>
-<p><img src="/2018/03/08/tree-summary/a/ linklist" alt="image"></p>
+<p><img src="/2018/03/08/tree-summary/a_linklist" alt="image"></p>
 <p>b图为一个普通的二叉查找树,大家看a图,如果我们的根节点选择是最小或者最大的数,那么二叉查找树就完全退化成了线性结构,因此,在二叉查找树的基础上,又出现了==AVL树,红黑树,它们两个都是基于二叉查找树==,只是在二叉查找树的基础上又对其做了限制.</p>
 <h2 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>AVL树是带有平衡条件的二叉查找树（平衡二叉查找树）,一般是用==平衡因子差值==判断是否平衡并通过旋转来实现平衡,左右子树树高不超过1,和红黑树相比,它是严格的平衡二叉树,平衡条件必须满足(所有节点的左右子树高度差不超过1).不管我们是执行插入还是删除操作,只要不满足上面的条件,就要通过旋转来保持平衡,而旋转是非常耗时的,由此我们可以知道==AVL树适合用于插入删除次数比较少，但查找多的情况==。 </p>
 <p><img src="/2018/03/08/tree-summary/avl" alt="image"></p>
@@ -326,7 +326,7 @@
 <li>如果一个节点是红的,那么它的两儿子都是黑的.</li>
 <li>对于任意节点而言,其到叶子点树NIL指针的每条路径都包含相同数目的黑节点.</li>
 </ul>
-<p><img src="/2018/03/08/tree-summary/RB/ Tree" alt="image"></p>
+<p><img src="/2018/03/08/tree-summary/RB_Tree" alt="image"></p>
 <h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h3><ul>
 <li>广泛用于C++的STL中,map和set都是用红黑树实现的.</li>
 <li>著名的linux进程调度Completely Fair Scheduler,用红黑树管理进程控制块,进程的虚拟内存区域都存储在一颗红黑树上,每个虚拟地址区域都对应红黑树的一个节点,左指针指向相邻的地址虚拟存储区域,右指针指向相邻的高地址虚拟地址空间.</li>
@@ -342,7 +342,7 @@
 <li>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1]指向关键字小于K[1]的子树，P[M]指向关键字大于K[M-1]的子树，其它P[i]指向关键字属于(K[i-1], K[i])的子树；</li>
 <li>==所有叶子结点位于同一层==；</li>
 </ul>
-<p><img src="/2018/03/08/tree-summary/B/ Tree" alt="image"></p>
+<p><img src="/2018/03/08/tree-summary/BTree" alt="image"></p>
 <p>这里只是一个简单的B树,在实际中B树节点中关键字很多的.上面的图中比如35节点,35代表一个key(索引)，而小黑块代表的是这个key所指向的内容在内存中实际的存储位置.是一个指针.</p>
 <h2 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h2><p>==B+树是应文件系统所需而产生的一种B树的变形树==(文件的目录一级一级索引,只有最底层的叶子节点(文件)保存数据.),==非叶子节点只保存索引,不保存实际的数据,数据都保存在叶子节点中==.这不就是文件系统文件的查找吗?</p>
 <p>我们就举个文件查找的例子:有3个文件夹,a,b,c, a包含b,b包含c,一个文件yang.c, a,b,c就是索引(存储在非叶子节点), a,b,c只是要找到的yang.c的key,而实际的数据yang.c存储在叶子节点上. </p>
@@ -356,7 +356,7 @@
 <li>==更适合于文件系统==; </li>
 </ul>
 <p>看下图</p>
-<p><img src="/2018/03/08/tree-summary/tree_summary/B+/ tree.png" alt="image"></p>
+<p><img src="/2018/03/08/tree-summary/tree_summary/B_tree" alt="image"></p>
 <p>非叶子节点(比如5,28,65)只是一个key(索引),实际的数据存在叶子节点上(5,8,9)才是真正的数据或指向真实数据的指针.</p>
 <h3 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h3><p>B和B+树主要用在文件系统以及数据库做索引.比如Mysql;</p>
 <h3 id="B-B-树性能分析"><a href="#B-B-树性能分析" class="headerlink" title="B/B+树性能分析"></a>B/B+树性能分析</h3><ul>
@@ -366,7 +366,7 @@
 <h3 id="为什么说B-tree比B树更适合实际应用中操作系统的文件索引和数据索引"><a href="#为什么说B-tree比B树更适合实际应用中操作系统的文件索引和数据索引" class="headerlink" title="为什么说B+tree比B树更适合实际应用中操作系统的文件索引和数据索引?"></a>为什么说B+tree比B树更适合实际应用中操作系统的文件索引和数据索引?</h3><p>B+-tree的内部节点并没有指向关键字具体信息的指针,因此其内部节点相对B树更小,如果把所有同一内部节点的关键字存放在同一盘块中,那么盘块所能容纳的关键字数量也越多,一次性读入内存的需要查找的关键字也就越多,相对IO读写次数就降低了.</p>
 <p>由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。<br>ps:我在知乎上看到有人是这样说的,我感觉说的也挺有道理的: </p>
 <p>他们认为数据库索引采用B+树的主要原因是:==B树在提高了IO性能的同时并没有解决元素遍历的我效率低下的问题==,正是为了解决这个问题,B+树应用而生.B+树只需要去遍历叶子节点就可以实现整棵树的遍历.而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作（或者说效率太低）.　</p>
-<h2 id="B树和B-树的区别"><a href="#B树和B-树的区别" class="headerlink" title="B树和B+树的区别"></a>B树和B+树的区别</h2><p><img src="/2018/03/08/tree-summary/tree_summary/B/ and\ B+\" alt="image"></p>
+<h2 id="B树和B-树的区别"><a href="#B树和B-树的区别" class="headerlink" title="B树和B+树的区别"></a>B树和B+树的区别</h2><p><img src="/2018/03/08/tree-summary/tree_summary/B_B_tree.png" alt="image"></p>
 <p>如图所示，区别有以下两点：</p>
 <ol>
 <li>B+树中==只有叶子节点会带有指向记录的指针==（ROWID），而==B树则所有节点都带有==，在内部节点出现的索引项不会再出现在叶子节点中。</li>
@@ -385,12 +385,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/03/08/tree-summary/">tree_summary</a></p>
+        <p><span>本文标题:</span><a href="/2018/03/08/tree-summary/">浅谈AVL树,红黑树,B树,B 树原理及应用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">John Doe</a></p>
         <p><span>发布时间:</span>2018-03-08, 10:40:07</p>
-        <p><span>最后更新:</span>2018-03-08, 10:55:03</p>
+        <p><span>最后更新:</span>2018-03-08, 11:11:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/08/tree-summary/" title="tree_summary">http://yoursite.com/2018/03/08/tree-summary/</a>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/08/tree-summary/" title="浅谈AVL树,红黑树,B树,B 树原理及应用">http://yoursite.com/2018/03/08/tree-summary/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/03/08/tree-summary/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -454,7 +454,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tree_summary　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"浅谈AVL树,红黑树,B树,B 树原理及应用　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -486,7 +486,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/08/tree-summary/">tree_summary</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/C-无序关联容器/">C++ 无序关联容器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/c-关联容器总结/">c++关联容器总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/STL里的multimap使用简介/">STL里的multimap使用简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/08/tree-summary/">浅谈AVL树,红黑树,B树,B 树原理及应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/C-无序关联容器/">C++ 无序关联容器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/c-关联容器总结/">c++关联容器总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/07/STL里的multimap使用简介/">STL里的multimap使用简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/03/hello-world/">Hello World</a></li></ul>
 
 
 
